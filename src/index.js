@@ -36,16 +36,16 @@ class App extends PureComponent {
       setTimeout(() => {
         if (randomNum === 1) {
           this.setState({
-            alert: "working fine"
+            alert: "sorry"
           });
           return reject("Error here");
         } else {
           this.setState({
-            alert: "sorry"
+            alert: "working fine"
           });
           return resolve("Success");
         }
-      }, 2000);
+      }, 1000);
     });
   }
 
