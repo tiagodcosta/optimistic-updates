@@ -1,0 +1,110 @@
+import React, { PureComponent } from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+const mockupData = [
+  {
+    id: 1,
+    message: "Hello World",
+    like: "no"
+  },
+  {
+    id: 2,
+    message: "Hi World",
+    like: "no"
+  },
+  {
+    id: 3,
+    message: "Bye World",
+    like: "no"
+  }
+];
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      updates: mockupData,
+      alert: "working fine"
+    };
+  }
+
+  saveRequest() {
+    return new Promise((resolve, reject) => {
+      let randomNum = Math.floor(Math.random() * Math.floor(3));
+      setTimeout(() => {
+        if (randomNum === 1) {
+          this.setState({
+            alert: "working fine"
+          });
+          return reject("Error here");
+        } else {
+          this.setState({
+            alert: "sorry"
+          });
+          return resolve("Success");
+        }
+      }, 2000);
+    });
+  }
+
+  handleClick = id => {
+    this.setState(
+      prevState => {
+        const updates = [...prevState.updates];
+        const index = updates.findIndex(update => update.id === id);
+
+        updates[index] = {
+          id: updates[index].id,
+          message: updates[index].message,
+          like: "yes"
+        };
+
+        return { updates };
+      },
+      () => {
+        this.saveRequest()
+          .then(() => {
+            console.log("ok");
+          })
+          .catch(() => {
+            console.log("problem");
+            this.setState(prevState => {
+              const updates = [...prevState.updates];
+              const index = updates.findIndex(update => update.id === id);
+
+              updates[index] = {
+                id: updates[index].id,
+                message: updates[index].message,
+                like: "no"
+              };
+
+              return { updates };
+            });
+          });
+      }
+    );
+  };
+
+  render() {
+    const { updates, alert } = this.state;
+    console.log("updates", updates);
+    return (
+      <div className="App">
+        <h1>Updates - {alert}</h1>
+        {updates.map((update, index) => {
+          return (
+            <div key={index} id={update.id}>
+              {update.message} - {update.like} -
+              <button onClick={() => this.handleClick(update.id)}>Like</button>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
