@@ -30,7 +30,7 @@ class App extends PureComponent {
     };
   }
 
-  saveRequest() {
+  mockupSaveRequest() {
     return new Promise((resolve, reject) => {
       let randomNum = Math.floor(Math.random() * Math.floor(3));
       setTimeout(() => {
@@ -64,12 +64,9 @@ class App extends PureComponent {
         return { updates };
       },
       () => {
-        this.saveRequest()
-          .then(() => {
-            console.log("ok");
-          })
+        this.mockupSaveRequest()
+          .then(() => {})
           .catch(() => {
-            console.log("problem");
             this.setState(prevState => {
               const updates = [...prevState.updates];
               const index = updates.findIndex(update => update.id === id);
