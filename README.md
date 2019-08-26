@@ -6,5 +6,5 @@
 2. Update local state
 3. Send request
 4. Get response
-5. If negative, undo update local state (step 2)
+5. If negative, rollback update local state (step 2)
 6. If positive, do nothing
