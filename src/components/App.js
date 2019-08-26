@@ -16,14 +16,8 @@ class App extends PureComponent {
       let randomNum = Math.floor(Math.random() * Math.floor(3));
       setTimeout(() => {
         if (randomNum === 1) {
-          this.setState({
-            errorMessage: "Sorry we could not send your answer :("
-          });
           return reject("Error here");
         } else {
-          this.setState({
-            errorMessage: ""
-          });
           return resolve("Success");
         }
       }, 1000);
@@ -33,6 +27,7 @@ class App extends PureComponent {
   handleClick = (id, answer) => {
     this.setState(
       prevState => {
+        const errorMessage = "";
         const updates = [...prevState.updates];
         const index = updates.findIndex(update => update.id === id);
 
@@ -42,13 +37,14 @@ class App extends PureComponent {
           answer: answer
         };
 
-        return { updates };
+        return { updates, errorMessage };
       },
       () => {
         this.mockupSaveRequest()
           .then(() => {})
           .catch(() => {
             this.setState(prevState => {
+              const errorMessage = "Sorry we could not send your answer :("
               const updates = [...prevState.updates];
               const index = updates.findIndex(update => update.id === id);
 
@@ -58,7 +54,7 @@ class App extends PureComponent {
                 answer: '---'
               };
 
-              return { updates };
+              return { updates, errorMessage };
             });
           });
       }
