@@ -82,12 +82,24 @@ body {
   font-size: .8rem;
 }
 
+
+
 .updates__button--green {
   background: #05c46b;
+  transition: background 500ms;
+}
+
+.updates__button--green:active {
+  background: #049250;
 }
 
 .updates__button--red {
-  background: #ff3f34;;
+  background: #ff3f34;
+  transition: background 500ms;
+}
+
+.updates__button--red:active {
+  background: #e70c00;
 }
 
 .updates__button:hover {
