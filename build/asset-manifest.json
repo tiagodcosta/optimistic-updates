@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/optimistic-updates/static/css/main.40b6ea22.chunk.css",
+    "main.js": "/optimistic-updates/static/js/main.46a10d7c.chunk.js",
+    "main.js.map": "/optimistic-updates/static/js/main.46a10d7c.chunk.js.map",
+    "runtime~main.js": "/optimistic-updates/static/js/runtime~main.51d80f86.js",
+    "runtime~main.js.map": "/optimistic-updates/static/js/runtime~main.51d80f86.js.map",
+    "static/js/2.164617b5.chunk.js": "/optimistic-updates/static/js/2.164617b5.chunk.js",
+    "static/js/2.164617b5.chunk.js.map": "/optimistic-updates/static/js/2.164617b5.chunk.js.map",
+    "index.html": "/optimistic-updates/index.html",
+    "precache-manifest.3fbcd877c35e8e2a24c4ec2bd578eeb6.js": "/optimistic-updates/precache-manifest.3fbcd877c35e8e2a24c4ec2bd578eeb6.js",
+    "service-worker.js": "/optimistic-updates/service-worker.js",
+    "static/css/main.40b6ea22.chunk.css.map": "/optimistic-updates/static/css/main.40b6ea22.chunk.css.map"
+  }
+}
