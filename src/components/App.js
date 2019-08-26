@@ -20,7 +20,7 @@ class App extends PureComponent {
         } else {
           return resolve("Success");
         }
-      }, 1000);
+      }, 500);
     });
   }
 
@@ -67,6 +67,7 @@ class App extends PureComponent {
 return (
       <section className="updates">
         <h1 className="updates__title">Optimistic Updates</h1>
+        <section className="updates__container">
         {updates.map((update, index) => {
           return (
             <article className="updates__item" key={index} id={update.id}>
@@ -80,6 +81,7 @@ return (
           );
         })}
         <p className="updates__error">{errorMessage}</p>
+        </section>
       </section>
     );
   }

@@ -21,10 +21,37 @@ body {
   width: 100%;
 }
 
+
+
 .updates__title {
   font-size: 2rem;
   margin: 3rem 0;
   color: #ef5777;
+  animation: fadeDown 1s ease-in both;
+}
+
+@keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -20%, 0);
+    } to {
+      opacity: 1;
+      transform: matrix3d(0, 0, 0);
+    }
+}
+
+.updates__container {
+  animation: fadeUp 1s ease-in both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+  } to {
+    opacity: 1;
+    transform: matrix3d(0, 0, 0);
+  }
 }
 
 .updates__item {
