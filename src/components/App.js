@@ -1,31 +1,13 @@
 import React, { PureComponent } from "react";
-
+import mockupData from '../data/mockup';
 import "./App.css";
-
-const mockupData = [
-  {
-    id: 1,
-    message: "Hello World",
-    like: "no"
-  },
-  {
-    id: 2,
-    message: "Hi World",
-    like: "no"
-  },
-  {
-    id: 3,
-    message: "Bye World",
-    like: "no"
-  }
-];
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       updates: mockupData,
-      alert: "working fine"
+      errorMessage: ""
     };
   }
 
@@ -35,12 +17,12 @@ class App extends PureComponent {
       setTimeout(() => {
         if (randomNum === 1) {
           this.setState({
-            alert: "sorry"
+            errorMessage: "Sorry we could not send your answer :("
           });
           return reject("Error here");
         } else {
           this.setState({
-            alert: "working fine"
+            errorMessage: ""
           });
           return resolve("Success");
         }
@@ -48,7 +30,7 @@ class App extends PureComponent {
     });
   }
 
-  handleClick = id => {
+  handleClick = (id, answer) => {
     this.setState(
       prevState => {
         const updates = [...prevState.updates];
@@ -57,7 +39,7 @@ class App extends PureComponent {
         updates[index] = {
           id: updates[index].id,
           message: updates[index].message,
-          like: "yes"
+          answer: answer
         };
 
         return { updates };
@@ -73,7 +55,7 @@ class App extends PureComponent {
               updates[index] = {
                 id: updates[index].id,
                 message: updates[index].message,
-                like: "no"
+                answer: '---'
               };
 
               return { updates };
@@ -84,21 +66,27 @@ class App extends PureComponent {
   };
 
   render() {
-    const { updates, alert } = this.state;
-    console.log("updates", updates);
-    return (
-      <div className="App">
-        <h1>Updates - {alert}</h1>
+    const { updates, errorMessage } = this.state;
+
+return (
+      <section className="updates">
+        <h1 className="updates__title">Optimistic Updates</h1>
         {updates.map((update, index) => {
           return (
-            <div key={index} id={update.id}>
-              {update.message} - {update.like} -
-              <button onClick={() => this.handleClick(update.id)}>Like</button>
-            </div>
+            <article className="updates__item" key={index} id={update.id}>
+              <section>
+                <p>{update.message}</p>
+                <p>Answer: {update.answer}</p>
+              </section>
+              <button className="updates__button updates__button--green" onClick={() => this.handleClick(update.id, 'yes')}>Yes</button>
+              <button className="updates__button updates__button--red" onClick={() => this.handleClick(update.id, 'no')}>No</button>
+            </article>
           );
         })}
-      </div>
+        <p className="updates__error">{errorMessage}</p>
+      </section>
     );
   }
 }
 
+export default App;

@@ -8,3 +8,7 @@
 4. Get response
 5. If negative, rollback update local state (step 2)
 6. If positive, do nothing
+
+
+
+
