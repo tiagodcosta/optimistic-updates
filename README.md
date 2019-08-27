@@ -9,7 +9,7 @@
 5. If negative, rollback update local state (step 2)
 6. If positive, do nothing
 
-[Preview here](https://vigilant-sinoussi-5d69ab.netlify.com/)
+[Preview here](https://optimistic-updates.netlify.com/)
 
 
 
